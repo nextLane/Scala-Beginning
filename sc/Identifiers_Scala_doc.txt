@@ -101,3 +101,7 @@ Bitwise:
 
 Assignment Operators: all binary operators can be written as assignment operators aprt from  a>>>=2 // not allowed
 
+>> Loop:
+for (i <- 1 until 5)
+or
+for(i <- 1 to 5)
