@@ -1,0 +1,103 @@
+Identifiers Scala:
+
+>>Alphanumeric: _value __1_vlaue
+#can't start from $
+
+>> Operator: ++ etc
+>> unary_+,  myvar_=
+>> literal identifiers `xyz`
+
+
+>>semicolon at the end of a statement is usually optional. 
+>> The package declaration is the first non-comment line in the source file as follows:
+import scala.collection.mutable.HashMap
+//first line
+
+import scala.xml._   //all content of this package
+rt scala.collection.immutable.{TreeMap, TreeSet}  //importing multiple classes
+
+>> same datatypes as java
+Unit: Corresponds to no value  //might be null equivalent, return type of methods
+
+Nothing:	The subtype of every other type; includes no values
+Any:	The supertype of any type; any object is of type Any
+AnyRef:	The supertype of any reference type 
+
+>> All the data types listed above are objects. There are no primitive types like in Java. This means that you can call methods on an Int, Long, etc.
+
+>> Symbol Literals:
+A symbol literal 'x is a shorthand for the expression scala.Symbol("x"). Symbol is a case class, which is defined as follows.
+
+package scala
+final case class Symbol private (name: String) {
+   override def toString: String = "'" + name
+}
+
+
+>> Multiple line string literal
+
+Multi-Line Strings
+
+A multi-line string literal is a sequence of characters enclosed in triple quotes """ ... """. The sequence of characters is arbitrary, except that it may contain three or more consuctive quote characters only at the very end.
+
+Characters must not necessarily be printable; newlines or other control characters are also permitted. Here is a multi-line string literal:
+
+"""the present string
+spans three
+lines."""
+
+
+>> Variable Scala
+Scala has the different syntax for the declaration of variables and they can be defined as value, i.e., constant or a variable. Following is the syntax to define a variable using var keyword:
+
+var myVar : String = "Foo"
+var = mutable
+val == immutable
+
+Eg:
+ val myVal : String = "Foo"
+
+>> If no datatype is specified
+
+ Variable Type Inference:
+
+When you assign an initial value to a variable, the Scala compiler can figure out the type of the variable based on the value assigned to it. This is called variable type inference.
+
+>> tuple can be stored in a variable
+
+Scala supports multiple assignments. If a code block or method returns a Tuple, the Tuple can be assigned to a val variable. 
+val (myVar1: Int, myVar2: String) = Pair(40, "Foo")  //check out
+
+>>  Java would permit both accesses because it lets an outer class access private members of its inner classes.
+Code:
+
+>>A modifier of the form private[X] or protected[X] means that access is private or protected "up to" X, where X designates some enclosing package, class or singleton object.
+Eg: package society {
+   package professional {
+      class Executive {
+         private[professional] var workDetails = null
+         private[society] var friends = null
+         private[this] var secrets = null
+
+         def help(another : Executive) {
+            println(another.workDetails)
+            println(another.secrets) //ERROR
+         }
+      }
+   }
+}
+
+Note the following points from the above example:
+
+    Variable workDetails will be accessible to any class within the enclosing package professional.
+
+    Variable friends will be accessible to any class within the enclosing package society.
+
+    Variable secrets will be accessible only on the implicit object within instance methods (this).
+
+>>Operators:
+Bitwise:
+~ ^ >> << >>> (0 filled) & | 
+
+Assignment Operators: all binary operators can be written as assignment operators aprt from  a>>>=2 // not allowed
+
